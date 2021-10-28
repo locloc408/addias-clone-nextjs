@@ -3,7 +3,6 @@ import { LinkStyle } from "../navbarStyle";
 import { useRouter } from "next/router";
 import { SideMenuBadge } from "../navbarStyle";
 import { TextField, Autocomplete } from "@mui/material";
-import { useState } from "react";
 interface searchType {
   tag: string;
   sorterTag: string;
@@ -24,7 +23,6 @@ export const SideMenu = ({ numberCart }: { numberCart: number }) => {
     tag: string;
     sorterTag: string;
   }
-
   return (
     <>
       <div
@@ -50,10 +48,7 @@ export const SideMenu = ({ numberCart }: { numberCart: number }) => {
             />
           )}
           onChange={(e, t: SearchType) => {
-            router.push({
-              pathname: `/productsList/search/[query]`,
-              query: { query: t.sorterTag },
-            });
+            router.push(`/productsList/search/${t.sorterTag}`);
           }}
           isOptionEqualToValue={() => {
             return true;

@@ -19,9 +19,6 @@ export const RegisterForm = ({
         <Box style={{ marginLeft: "100px", width: "437px" }}>
           <Typography variant="h3">ĐĂNG KÝ</Typography>
           <Typography>Đăng Ký Bằng</Typography>
-          <Button variant="outlined" endIcon={<FacebookIcon />}>
-            FaceBook
-          </Button>
           <Button
             style={{ marginLeft: "10px" }}
             variant="outlined"

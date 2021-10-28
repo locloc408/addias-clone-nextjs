@@ -54,7 +54,7 @@ export const LoginForm = ({ session, provider }) => {
         const user = await getData.Login({ email, password });
         setAlert(false);
         dispatch(setUser(user));
-        router.push(`${process.env.NEXTAUTH_URL}`);
+        router.push("/");
       }
     } catch (error) {
       console.log(error);
@@ -111,23 +111,6 @@ export const LoginForm = ({ session, provider }) => {
           Đăng Nhập
         </ButtonNeu>
         <Box sx={{ position: "relative", top: "20px" }}>
-          <Button
-            sx={{ paddingLeft: "10px", marginRight: "10px" }}
-            variant="outlined"
-            endIcon={<Facebook />}
-            onClick={async () => {
-              try {
-                const result = await signIn(provider.facebook.id);
-                if (result.ok) {
-                  router.push(`${process.env.NEXTAUTH_URL}`);
-                }
-              } catch (error) {
-                console.log(error);
-              }
-            }}
-          >
-            FaceBook
-          </Button>
           <Button
             sx={{ color: "rgb(86, 78, 209)" }}
             variant="outlined"
