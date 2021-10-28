@@ -62,17 +62,15 @@ const UltraboostPage = () => {
 };
 export default UltraboostPage;
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await getData.getProducts();
   return {
     props: {
-      data,
+      search,
     },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = search.map((e) => {
-    console.log(e.sorterTag);
     return {
       params: {
         query: e.sorterTag,

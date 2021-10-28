@@ -44,8 +44,8 @@ export default function MyApp(props: MyAppProps) {
         type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
-      <script src="nprogress.js"></script>
-      <link rel="stylesheet" href="nprogress.css" />
+      {/* <script src="nprogress.js"></script>
+      <link rel="stylesheet" href="nprogress.css" /> */}
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <Provider store={store}>
         <ThemeProvider theme={theme}>

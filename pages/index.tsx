@@ -8,7 +8,6 @@ import { Advertises } from "../component/Advertises/AdvertiseList";
 import { FirstHero } from "../component/FirstHero/firstHero";
 import Collection4DPage from "../component/ProductList/4D";
 import { ContainerTeaser } from "../component/ContainerTeaser/ContainerTeaser";
-import axios from "axios";
 const HomePage = ({
   ProductList,
   Advertisement,
@@ -28,6 +27,7 @@ const HomePage = ({
     </div>
   );
 };
+HomePage.displayName = "HomePage";
 export default HomePage;
 
 export const getStaticProps: GetStaticProps = async () => {

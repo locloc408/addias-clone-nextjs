@@ -3,13 +3,12 @@ import { getData } from "../../component/Helper/Axios/fetchProductList";
 import { DataType } from "../../component/Type/ProductType";
 import { ProductDetailComponent } from "../../component/ProductDetail/ProductDetail";
 import { Comment } from "../../component/ProductDetail/Comment";
-import { ObjectId } from "mongoose";
 const Collection4dDetail = ({
   Collection4Ddetail,
   Collection4dId,
 }: {
   Collection4Ddetail: DataType;
-  Collection4dId: any;
+  Collection4dId: string;
 }) => {
   return (
     <div>

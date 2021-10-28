@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
 import { useRouter } from "next/router";
 import { SideRegister } from "../component/Register/SideRegister";
 import { RegisterForm } from "../component/Register/RegisterForm";
@@ -10,7 +8,6 @@ import { getData } from "../component/Helper/Axios/fetchProductList";
 import { signIn } from "next-auth/client";
 import { useAppDispatch } from "../redux/store/hook";
 import { setUser } from "../redux/slice/User";
-import axios from "axios";
 const defaultValues = {
   firstName: "",
   lastName: "",
@@ -36,7 +33,6 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
     control,
-    reset,
   } = useForm<DefaultValues>({ defaultValues });
   const onsub = async (data) => {
     const res = await getData.registerAuth(data);
@@ -65,7 +61,7 @@ const Register = () => {
           control={control}
           handleSubmit={handleSubmit}
           onsub={onsub}
-          errors={errors}
+          errors={errors ? errors : null}
           alert={alert}
         />
 
@@ -74,5 +70,5 @@ const Register = () => {
     </>
   );
 };
-
+Register.displayName = "Register";
 export default Register;

@@ -1,7 +1,6 @@
 import { Carts } from "../redux/slice/Cart";
 import { Typography, Box } from "@mui/material";
 import { useAppSelector } from "../redux/store/hook";
-import { motion } from "framer-motion";
 import { CartContainer } from "../component/Cart/CartContainer";
 import { CartDes } from "../component/Cart/CartDes";
 export default function Cart() {

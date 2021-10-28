@@ -21,5 +21,5 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   };
 };
-
+Login.displayName = "Login";
 export default Login;

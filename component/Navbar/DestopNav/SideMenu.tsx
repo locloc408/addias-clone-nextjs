@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { SideMenuBadge } from "../navbarStyle";
 import { TextField, Autocomplete } from "@mui/material";
 import { useState } from "react";
-import { matchSorter } from "match-sorter";
 interface searchType {
   tag: string;
   sorterTag: string;
@@ -21,8 +20,6 @@ export const search: searchType[] = [
 ];
 export const SideMenu = ({ numberCart }: { numberCart: number }) => {
   const router = useRouter();
-  const [searchFieldValue, setSearchFieldvalue] = useState<any>();
-  console.log(searchFieldValue);
   interface SearchType {
     tag: string;
     sorterTag: string;

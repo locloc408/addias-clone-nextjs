@@ -88,7 +88,6 @@ export const Comment = ({ Collection4dId }) => {
     `${process.env.NEXT_PUBLIC_BASE_URI}/ProductList/Comment/${Collection4dId} `,
     fetcher
   );
-  console.log(data);
   const {
     formState: { errors },
     control,
@@ -99,12 +98,15 @@ export const Comment = ({ Collection4dId }) => {
   const StarRatings = () => {
     if (data && data[0]?.length !== undefined) {
       const starRating = data[0].map((a) => a.comments);
-
-      const Total: any = starRating.reduce((prev: any, cur: any) => {
-        const total = prev.length + cur.length;
+      if (starRating.length > 1) {
+        const Total: any = starRating.reduce((prev: any, cur: any) => {
+          const total = prev.length + cur.length;
+          return total;
+        });
+      } else {
+        const total = starRating[0].length;
         return total;
-      });
-      return Total;
+      }
     } else {
       return 0;
     }
@@ -116,11 +118,18 @@ export const Comment = ({ Collection4dId }) => {
           const b = a.comments.map((c) => c.starRating);
           return b;
         });
-        const TotalStarRatings = starRating.flat(2).reduce((prev, cur) => {
-          return prev + cur;
-        });
-        const averageStarRatings = TotalStarRatings / StarRatings();
-        return averageStarRatings;
+        if (starRating.length > 1) {
+          const TotalStarRatings = starRating.flat(2).reduce((prev, cur) => {
+            return prev + cur;
+          });
+          const averageStarRatings = TotalStarRatings / StarRatings();
+          return averageStarRatings;
+        } else {
+          const totalStarRatings = starRating[0].reduce((prev, cur) => {
+            return prev + cur;
+          });
+          return totalStarRatings / StarRatings();
+        }
       } else {
         return 0;
       }
@@ -166,7 +175,9 @@ export const Comment = ({ Collection4dId }) => {
                 backgroundColor: "#2ada71",
               }}
             >
-              <Box sx={{ fontSize: "56px" }}>{starRatingAverage()}</Box>
+              <Box sx={{ fontSize: "56px", paddingRight: "15px" }}>
+                {starRatingAverage()}
+              </Box>
               <Box sx={{ display: "flex", flexDirection: "column" }}>
                 <Box>
                   {StarRateLoop(starRatingAverage()).length > 0 &&

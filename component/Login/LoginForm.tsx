@@ -62,7 +62,14 @@ export const LoginForm = ({ session, provider }) => {
   };
   return (
     <div>
-      <form style={{ width: "450px", marginLeft: "50px", paddingLeft: "15px" }}>
+      <form
+        style={{
+          width: "450px",
+          marginLeft: "50px",
+          paddingLeft: "15px",
+          paddingTop: "15px",
+        }}
+      >
         <Typography variant="h2">Đăng Nhập</Typography>
         <Typography variant="h4">Bạn Quên Mật Khẩu ?</Typography>
 

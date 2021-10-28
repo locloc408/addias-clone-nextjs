@@ -17,7 +17,7 @@ const ProductDetail = ({
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getProductById(Product));
-  }, []);
+  }, [Product, dispatch]);
   if (!Product) {
     return <div>loading.............</div>;
   }
@@ -30,6 +30,8 @@ const ProductDetail = ({
     </div>
   );
 };
+
+ProductDetail.displayName = "ProductDetail";
 export default ProductDetail;
 
 export const getStaticPaths: GetStaticPaths = async () => {

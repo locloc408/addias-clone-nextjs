@@ -49,7 +49,7 @@ export const SideLogin = () => {
           <Check sx={{ marginTop: "10px" }} />
           Các sự kiện sắp tới
         </Typography>
-        <LinkStyle passHref href="/register">
+        <LinkStyle href="/register">
           {" "}
           <ButtonNeu
             left={114}
