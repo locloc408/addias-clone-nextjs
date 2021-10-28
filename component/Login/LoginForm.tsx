@@ -20,7 +20,7 @@ import { User } from "../Type/User";
 import { Session } from "next-auth";
 import Facebook from "@mui/icons-material/Facebook";
 import { Google } from "@mui/icons-material";
-export const LoginForm = ({ session, provider }) => {
+export const LoginForm = () => {
   const router = useRouter();
   // const [session, loading] = useSession();
   const [alert, setAlert] = useState(false);
@@ -116,7 +116,7 @@ export const LoginForm = ({ session, provider }) => {
             variant="outlined"
             endIcon={<Google />}
             onClick={async () => {
-              signIn("google", { callbackUrl: `${process.env.NEXTAUTH_URL}` });
+              signIn("google", { callbackUrl: "/" });
             }}
           >
             Google

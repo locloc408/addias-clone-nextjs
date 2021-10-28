@@ -45,9 +45,7 @@ const Register = () => {
       });
       if (result.ok) {
         dispatch(setUser(res.result));
-        router.push({
-          pathname: `${process.env.NEXTAUTH_URL}`,
-        });
+        router.push("/");
       }
     } else {
       setAlert(true);
