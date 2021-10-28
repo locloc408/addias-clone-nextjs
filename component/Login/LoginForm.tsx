@@ -54,7 +54,7 @@ export const LoginForm = ({ session, provider }) => {
         const user = await getData.Login({ email, password });
         setAlert(false);
         dispatch(setUser(user));
-        router.push("/");
+        router.push(`${process.env.NEXTAUTH_URL}`);
       }
     } catch (error) {
       console.log(error);
@@ -119,7 +119,7 @@ export const LoginForm = ({ session, provider }) => {
               try {
                 const result = await signIn(provider.facebook.id);
                 if (result.ok) {
-                  router.push("/");
+                  router.push(`${process.env.NEXTAUTH_URL}`);
                 }
               } catch (error) {
                 console.log(error);
