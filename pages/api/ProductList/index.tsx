@@ -10,9 +10,9 @@ async function handleRequest(req: NextApiRequest, res: NextApiResponse) {
       //const Adidas = mongoose.model("Adidas", AdidasCollection);
       // const found = await collect4d.insertMany(data);
       const news = await Adidas.find();
-      return res.status(200).send(news);
+      return res.status(200).json(news);
     } catch (error) {
-      return res.status(500).send(error);
+      return res.status(500).json(error);
     }
   } else {
   }

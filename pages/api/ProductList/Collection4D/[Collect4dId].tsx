@@ -8,7 +8,7 @@ async function handleRequest(req: NextApiRequest, res: NextApiResponse) {
       const { Collect4dId } = req.query;
       const Product = await Collect4d.findById(Collect4dId);
 
-      res.status(200).send(Product);
+      res.status(200).json(Product);
     } catch (error) {
       return res.status(500).send(error);
     }

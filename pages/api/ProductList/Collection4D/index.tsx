@@ -6,9 +6,9 @@ async function handleRequest(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "GET") {
     try {
       const news = await collect4d.find();
-      return res.status(200).send(news);
+      return res.status(200).json(news);
     } catch (error) {
-      return res.status(500).send(error);
+      return res.status(500).json(error);
     }
   }
 }

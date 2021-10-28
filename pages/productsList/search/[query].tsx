@@ -5,25 +5,11 @@ import { Grid, CardMedia, Typography, Box } from "@mui/material";
 import { LinkStyle } from "../../../component/Navbar/navbarStyle";
 import { useRouter } from "next/router";
 import { search } from "../../../component/Navbar/DestopNav/SideMenu";
-import { useCallback, useState, useEffect } from "react";
-const UltraboostPage = () => {
+import Adidas from "../../../component/model/ProductList/Adidas";
+import Collection4D from "../../../component/model/ProductList/4D";
+import ConnectDB from "../../../component/Helper/ConnectDB";
+const UltraboostPage = ({ data }: { data: DataType[] }) => {
   const router = useRouter();
-  const { query } = router.query;
-  const [data, setData] = useState<DataType[]>([]);
-
-  useEffect(() => {
-    const GetDataBySearchTag = async () => {
-      if (query === "ultraBoost") {
-        const data = await getData.getProducts();
-        setData(data);
-      }
-      if (query === "fusio") {
-        const data = await getData.get4D();
-        setData(data);
-      }
-    };
-    GetDataBySearchTag();
-  }, [query]);
   return (
     <Grid container>
       {data?.map((e) => {
@@ -61,12 +47,26 @@ const UltraboostPage = () => {
   );
 };
 export default UltraboostPage;
-export const getStaticProps: GetStaticProps = async () => {
-  return {
-    props: {
-      search,
-    },
-  };
+export const getStaticProps: GetStaticProps = async (context) => {
+  await ConnectDB();
+  if (context.params.query === "ultraBoost") {
+    const datas = await Adidas.find();
+    const data = JSON.parse(JSON.stringify(datas));
+    return {
+      props: {
+        data,
+      },
+    };
+  }
+  if (context.params.query === "fusio") {
+    const datas = await Collection4D.find();
+    const data = JSON.parse(JSON.stringify(datas));
+    return {
+      props: {
+        data,
+      },
+    };
+  }
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

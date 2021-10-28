@@ -9,9 +9,9 @@ async function handleRequest(req: NextApiRequest, res: NextApiResponse) {
       const { productId } = req.query;
       const Product = await Adidas.findById(productId);
 
-      res.status(200).send(Product);
+      res.status(200).json(Product);
     } catch (error) {
-      return res.status(500).send(error);
+      return res.status(500).json(error);
     }
   } else {
   }

@@ -10,12 +10,6 @@ export const TopNav = () => {
   const [session, loading] = useSession();
   const LastName = useAppSelector(lastName);
   const FirstName = useAppSelector(firstName);
-  const [la, setLa] = useState<any>();
-  useEffect(() => {
-    setTimeout(() => {
-      setLa(session);
-    }, 1000);
-  }, [session]);
   return (
     <>
       <TopNavBar>
@@ -23,7 +17,7 @@ export const TopNav = () => {
           <NavContainer
             sx={{ display: "flex", justifyContent: "space-between" }}
           >
-            {!la && !loading && (
+            {!session && !loading && (
               <Box
                 sx={{
                   borderRadius: "1rem",
@@ -47,7 +41,7 @@ export const TopNav = () => {
                 </LinkStyle>
               </Box>
             )}
-            {la && (
+            {session && (
               <div style={{ display: "flex" }}>
                 <Button
                   onClick={() => {

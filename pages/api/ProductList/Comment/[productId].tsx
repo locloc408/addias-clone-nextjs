@@ -121,13 +121,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
   }
   if (req.method === "GET") {
-    const { productId } = req.query;
-    const inforCommentsPost = await Comments.find({
-      productId: productId,
-    });
-    const comments = inforCommentsPost.map((cms) => cms.commenters);
-    console.log(productId);
-    res.status(200).json(comments);
+    try {
+      const { productId } = req.query;
+      const inforCommentsPost = await Comments.find({
+        productId: productId,
+      });
+      const comments = inforCommentsPost.map((cms) => cms.commenters);
+      console.log(comments);
+      res.status(200).json(comments);
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 export default handler;

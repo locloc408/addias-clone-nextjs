@@ -7,9 +7,9 @@ const handleAdvertise = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
     try {
       const Advertisement = await Advertises.find();
-      res.status(200).send(Advertisement);
+      res.status(200).json(Advertisement);
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).json(error);
     }
   }
 };
