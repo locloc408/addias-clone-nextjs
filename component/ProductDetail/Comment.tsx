@@ -77,15 +77,11 @@ export const Comment = ({ Collection4dId }) => {
       starRating,
       time,
     });
-    mutate(
-      `${process.env.NEXT_PUBLIC_BASE_URI}/ProductList/Comment/${Collection4dId} `,
-      data,
-      false
-    );
+    mutate(`/ProductList/Comment/${Collection4dId} `, data, false);
     console.log(data);
   };
   const { data } = useSWR<data>(
-    `${process.env.NEXT_PUBLIC_BASE_URI}/ProductList/Comment/${Collection4dId} `,
+    `/ProductList/Comment/${Collection4dId} `,
     fetcher
   );
   const {

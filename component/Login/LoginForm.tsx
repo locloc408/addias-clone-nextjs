@@ -10,15 +10,7 @@ import { setUser } from "../../redux/slice/User";
 import { useForm } from "react-hook-form";
 import { TextInput } from "../Form/TextInput";
 import { ButtonNeu } from "../FirstHero/firstHeroStyle";
-import {
-  useSession,
-  signIn,
-  getSession,
-  ClientSafeProvider,
-} from "next-auth/client";
-import { User } from "../Type/User";
-import { Session } from "next-auth";
-import Facebook from "@mui/icons-material/Facebook";
+import { signIn } from "next-auth/client";
 import { Google } from "@mui/icons-material";
 export const LoginForm = () => {
   const router = useRouter();
@@ -116,7 +108,7 @@ export const LoginForm = () => {
             variant="outlined"
             endIcon={<Google />}
             onClick={async () => {
-              signIn("google", { callbackUrl: "/" });
+              signIn("google", { callbackUrl: `${process.env.NEXTAUTH_URL}` });
             }}
           >
             Google

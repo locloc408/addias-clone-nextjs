@@ -10,6 +10,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     password: password,
   });
 
-  res.status(200).send(result);
+  res.status(200).json(result);
 }
 export default handler;
