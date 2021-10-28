@@ -43,7 +43,6 @@ const Register = () => {
         email,
         password,
       });
-      console.log(result);
       if (result.ok) {
         dispatch(setUser(res.result));
         router.push({

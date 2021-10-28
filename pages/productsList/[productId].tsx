@@ -7,6 +7,8 @@ import { getProductById } from "../../redux/slice/ProductList";
 import { ProductDetailComponent } from "../../component/ProductDetail/ProductDetail";
 import { Comment } from "../../component/ProductDetail/Comment";
 import { ObjectId } from "mongoose";
+import connectDB from "../../component/Helper/ConnectDB";
+import Adidas from "../../component/model/ProductList/Adidas";
 const ProductDetail = ({
   Product,
   productId,
@@ -35,7 +37,9 @@ ProductDetail.displayName = "ProductDetail";
 export default ProductDetail;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data: DataType[] = await getData.getProducts();
+  await connectDB();
+  const datas = await Adidas.find();
+  const data: DataType[] = JSON.parse(JSON.stringify(datas));
   const paths = data.map((data: DataType) => {
     return {
       params: {
@@ -50,8 +54,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  await connectDB();
   const { productId } = context.params;
-  const Product: DataType = await getData.getProductById(productId);
+  const ProductList = await Adidas.findById(productId);
+  const Product: DataType = JSON.parse(JSON.stringify(ProductList));
   return {
     props: {
       Product,

@@ -8,6 +8,10 @@ import { Advertises } from "../component/Advertises/AdvertiseList";
 import { FirstHero } from "../component/FirstHero/firstHero";
 import Collection4DPage from "../component/ProductList/4D";
 import { ContainerTeaser } from "../component/ContainerTeaser/ContainerTeaser";
+import connectDB from "../component/Helper/ConnectDB";
+import Adidas from "../component/model/ProductList/Adidas";
+import AdvertisesList from "../component/model/Advertises/Advertises";
+import collect4d from "../component/model/ProductList/4D";
 const HomePage = ({
   ProductList,
   Advertisement,
@@ -31,9 +35,13 @@ HomePage.displayName = "HomePage";
 export default HomePage;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const ProductList = await getData.getProducts();
-  const Advertisement = await getData.getAdvertisement();
-  const Collection4d = await getData.get4D();
+  await connectDB();
+  const AdidasList = await Adidas.find();
+  const ProductList = JSON.parse(JSON.stringify(AdidasList));
+  const Advertiselist = await AdvertisesList.find();
+  const Advertisement = JSON.parse(JSON.stringify(Advertiselist));
+  const Collection4dList = await collect4d.find();
+  const Collection4d = JSON.parse(JSON.stringify(Collection4dList));
   return {
     props: {
       ProductList,

@@ -3,7 +3,7 @@ import { Typography, Box } from "@mui/material";
 import { useAppSelector } from "../redux/store/hook";
 import { CartContainer } from "../component/Cart/CartContainer";
 import { CartDes } from "../component/Cart/CartDes";
-export default function Cart() {
+const Cart = () => {
   const carts = useAppSelector(Carts);
   const isEmty = !carts.length;
   const EmtyCart = () => {
@@ -36,4 +36,6 @@ export default function Cart() {
     );
   };
   return <>{isEmty ? <EmtyCart /> : <FilledCart />}</>;
-}
+};
+Cart.displayName = "Cart";
+export default Cart;
