@@ -4,7 +4,10 @@ import mongoose from "mongoose";
 import User from "../../../../component/model/User/User";
 import Comments from "../../../../component/model/Comments/Comments";
 import { CommentsType } from "../../../../component/ProductDetail/Comment";
+import { cors } from "../../../../component/Helper/Cors/cors";
+import runMiddleware from "../../../../component/Helper/Cors/cors";
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  await runMiddleware(req, res, cors);
   await connectDB();
   if (req.method === "POST") {
     try {

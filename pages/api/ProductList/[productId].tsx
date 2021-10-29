@@ -2,7 +2,10 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import connectDB from "../../../component/Helper/ConnectDB";
 import Adidas from "../../../component/model/ProductList/Adidas";
 import User from "../../../component/model/User/User";
+import { cors } from "../../../component/Helper/Cors/cors";
+import runMiddleware from "../../../component/Helper/Cors/cors";
 async function handleRequest(req: NextApiRequest, res: NextApiResponse) {
+  await runMiddleware(req, res, cors);
   await connectDB();
   if (req.method === "GET") {
     try {

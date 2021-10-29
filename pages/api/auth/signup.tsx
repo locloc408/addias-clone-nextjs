@@ -1,7 +1,10 @@
 import connectDB from "../../../component/Helper/ConnectDB";
 import { NextApiRequest, NextApiResponse } from "next";
 import User from "../../../component/model/User/User";
+import { cors } from "../../../component/Helper/Cors/cors";
+import runMiddleware from "../../../component/Helper/Cors/cors";
 async function handler(req: NextApiRequest, res: NextApiResponse) {
+  await runMiddleware(req, res, cors);
   await connectDB();
   const { method } = req;
   if (method === "POST") {
