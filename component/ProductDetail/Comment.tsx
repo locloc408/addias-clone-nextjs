@@ -104,11 +104,13 @@ export const Comment = ({ Collection4dId }) => {
   const StarRatings = () => {
     if (data && data[0]?.length !== undefined) {
       const starRating = data[0].map((a) => a.comments);
+      const a = starRating.length;
       if (starRating.length > 1) {
         const Total: any = starRating.reduce((prev: any, cur: any) => {
           const total = prev.length + cur.length;
           return total;
         });
+        return Total;
       } else {
         const total = starRating[0].length;
         return total;
