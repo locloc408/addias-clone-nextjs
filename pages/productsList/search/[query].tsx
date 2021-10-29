@@ -8,7 +8,7 @@ import { search } from "../../../component/Navbar/DestopNav/SideMenu";
 import Adidas from "../../../component/model/ProductList/Adidas";
 import Collection4D from "../../../component/model/ProductList/4D";
 import ConnectDB from "../../../component/Helper/ConnectDB";
-const UltraboostPage = ({ data }: { data: DataType[] }) => {
+const UltraboostPage = ({ data, type }: { data: DataType[]; type: string }) => {
   const router = useRouter();
   return (
     <Grid container>
@@ -20,7 +20,7 @@ const UltraboostPage = ({ data }: { data: DataType[] }) => {
                 cursor: "pointer",
               }}
               onClick={() => {
-                router.push(`/Collection4D/${e._id}`);
+                router.push(`${process.env.NEXTAUTH_URL}/${type}/${e._id}`);
               }}
             >
               <Box
@@ -55,6 +55,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return {
       props: {
         data,
+        type: "productsList",
       },
     };
   }
@@ -64,6 +65,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return {
       props: {
         data,
+        type: "Collection4D",
       },
     };
   }
