@@ -1,11 +1,12 @@
 import { LinkStyle } from "../navbarStyle";
 import { TopNavBar, TopNavContainer, NavContainer } from "../navbarStyle";
 import { useSession } from "next-auth/client";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, CardMedia, Typography } from "@mui/material";
 import { signOut } from "next-auth/client";
 import { useAppSelector } from "../../../redux/store/hook";
 import { email, firstName, lastName, gender } from "../../../redux/slice/User";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 export const TopNav = () => {
   const [session, loading] = useSession();
   const LastName = useAppSelector(lastName);
@@ -67,9 +68,6 @@ export const TopNav = () => {
                   </Typography>
                 </Button>
                 <Button
-                  onClick={() => {
-                    signOut();
-                  }}
                   sx={{
                     borderRadius: "1rem",
                     backgroundColor: "#804AE8",
@@ -93,10 +91,12 @@ export const TopNav = () => {
             )}
           </NavContainer>
           <div>
-            <img
-              style={{ height: "20px", width: "20px" }}
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/1200px-Flag_of_Vietnam.svg.png"
-              alt=""
+            <CardMedia
+              sx={{
+                height: "20px",
+                width: "20px",
+              }}
+              image="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/1200px-Flag_of_Vietnam.svg.png"
             />
           </div>
         </TopNavContainer>

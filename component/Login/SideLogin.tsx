@@ -1,13 +1,33 @@
 import { Typography } from "@mui/material";
 import { ArrowForward, Check } from "@mui/icons-material";
+import { Box } from "@mui/material";
 import { LinkStyle } from "../Navbar/navbarStyle";
 import { ButtonNeu } from "../FirstHero/firstHeroStyle";
 export const SideLogin = () => {
   return (
-    <div style={{ marginLeft: "80px" }}>
+    <Box
+      sx={{
+        display: {
+          xs: "none",
+        },
+        marginLeft: {
+          lg: "80px",
+          xs: 0,
+        },
+        paddingTop: {
+          xs: "30px",
+        },
+      }}
+    >
       <Typography variant="h3">Tạo Một Tài Khoản</Typography>
       <Typography
-        style={{ textDecoration: "none", width: "600px" }}
+        sx={{
+          textDecoration: "none",
+          width: {
+            lg: "600px",
+            xs: "auto",
+          },
+        }}
         variant="h5"
       >
         Thật dễ dàng tạo một tài khoản. Hãy nhập địa chỉ email của bạn và điền
@@ -60,6 +80,6 @@ export const SideLogin = () => {
           </ButtonNeu>
         </LinkStyle>
       </div>
-    </div>
+    </Box>
   );
 };

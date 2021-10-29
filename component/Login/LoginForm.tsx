@@ -1,4 +1,10 @@
-import { Typography, Checkbox, Button, Box, FormControl } from "@mui/material";
+import {
+  Typography,
+  Checkbox,
+  Button,
+  Box,
+  CircularProgress,
+} from "@mui/material";
 import { useState } from "react";
 import ArrowForward from "@mui/icons-material/ArrowForward";
 import { useRouter } from "next/router";
@@ -12,9 +18,11 @@ import { TextInput } from "../Form/TextInput";
 import { ButtonNeu } from "../FirstHero/firstHeroStyle";
 import { signIn } from "next-auth/client";
 import { Google } from "@mui/icons-material";
+import { useSession } from "next-auth/client";
+
 export const LoginForm = () => {
   const router = useRouter();
-  // const [session, loading] = useSession();
+  const [session, loading] = useSession();
   const [alert, setAlert] = useState(false);
   const [check, setCheck] = useState(false);
   interface LoginType {
@@ -31,8 +39,8 @@ export const LoginForm = () => {
       password: "",
     },
   });
+  console.log(loading);
   const dispatch = useAppDispatch();
-
   const handleLogin = async ({ email, password }) => {
     try {
       const result = await signIn("credentials", {
@@ -53,15 +61,21 @@ export const LoginForm = () => {
     }
   };
   return (
-    <div>
-      <form
-        style={{
-          width: "450px",
-          marginLeft: "50px",
-          paddingLeft: "15px",
-          paddingTop: "15px",
-        }}
-      >
+    <Box
+      sx={{
+        width: {
+          lg: "450px",
+          xs: "auto",
+        },
+        marginLeft: {
+          lg: "50px",
+          xs: 0,
+        },
+        paddingLeft: "15px",
+        paddingTop: "15px",
+      }}
+    >
+      <form>
         <Typography variant="h2">Đăng Nhập</Typography>
         <Typography variant="h4">Bạn Quên Mật Khẩu ?</Typography>
 
@@ -115,6 +129,6 @@ export const LoginForm = () => {
           </Button>
         </Box>
       </form>
-    </div>
+    </Box>
   );
 };

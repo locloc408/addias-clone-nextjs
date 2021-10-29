@@ -1,12 +1,19 @@
 import { SideLogin } from "../component/Login/SideLogin";
 import { LoginForm } from "../component/Login/LoginForm";
-
+import { Box } from "@mui/material";
 const Login = () => {
   return (
-    <div style={{ display: "flex" }}>
+    <Box
+      sx={{
+        display: {
+          xs: "block",
+          lg: "flex",
+        },
+      }}
+    >
       <LoginForm></LoginForm>
       <SideLogin></SideLogin>
-    </div>
+    </Box>
   );
 };
 Login.displayName = "Login";
