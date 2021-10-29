@@ -15,14 +15,7 @@ const UltraboostPage = ({ data, type }: { data: DataType[]; type: string }) => {
       {data?.map((e) => {
         return (
           <Grid item key={e._id.toString()} lg={3} xs={12} sm={6}>
-            <Box
-              sx={{
-                cursor: "pointer",
-              }}
-              onClick={() => {
-                router.push(`${process.env.NEXTAUTH_URL}/${type}/${e._id}`);
-              }}
-            >
+            <LinkStyle href={`/${type}/${e._id}`}>
               <Box
                 sx={{
                   "&:hover": {
@@ -39,7 +32,7 @@ const UltraboostPage = ({ data, type }: { data: DataType[]; type: string }) => {
                 <Typography variant="h5">{e.title}</Typography>
                 <Typography>{e.type}</Typography>
               </Box>
-            </Box>
+            </LinkStyle>
           </Grid>
         );
       })}
