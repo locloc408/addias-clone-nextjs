@@ -9,6 +9,7 @@ export const SideLogin = () => {
       sx={{
         display: {
           xs: "none",
+          lg: "block",
         },
         marginLeft: {
           lg: "80px",
