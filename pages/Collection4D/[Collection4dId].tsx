@@ -20,24 +20,24 @@ const Collection4dDetail = ({
   );
 };
 export default Collection4dDetail;
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   await connectDB();
-//   const datas = await Collection4D.find();
-//   const data = JSON.parse(JSON.stringify(datas));
-//   const paths = data.map((detail: DataType) => {
-//     return {
-//       params: {
-//         Collection4dId: detail._id.toString(),
-//       },
-//     };
-//   });
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// };
+export const getStaticPaths: GetStaticPaths = async () => {
+  await connectDB();
+  const datas = await Collection4D.find();
+  const data = JSON.parse(JSON.stringify(datas));
+  const paths = data.map((detail: DataType) => {
+    return {
+      params: {
+        Collection4dId: detail._id.toString(),
+      },
+    };
+  });
+  return {
+    paths,
+    fallback: false,
+  };
+};
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   await connectDB();
   const { Collection4dId } = context.params;
   const Collection4Đetail = await Collection4D.findById(Collection4dId);
