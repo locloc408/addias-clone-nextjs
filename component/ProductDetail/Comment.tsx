@@ -55,10 +55,10 @@ export const Comment = ({ Collection4dId }) => {
   const [showModal, setModal] = useState(false);
   const [session] = useSession();
   const Email = useAppSelector(email);
-  const fetcher = useCallback(
-    (url) => axios.get(url).then((res) => res.data),
-    []
-  );
+  const fetcher = async (url) => {
+    const res = await fetch(url);
+    return res.json();
+  };
   const handleComment = async ({ title, comment, starRating }) => {
     setModal(true);
     const time =
@@ -84,10 +84,16 @@ export const Comment = ({ Collection4dId }) => {
     );
     console.log(data);
   };
-  const { data } = useSWR<data>(
+  const { data, error } = useSWR<data>(
     `${process.env.NEXT_PUBLIC_BASE_URI}/ProductList/Comment/${Collection4dId} `,
     fetcher
   );
+  if (error) {
+    <div>ERRRoR</div>;
+    {
+      console.log(error);
+    }
+  }
   const {
     formState: { errors },
     control,
